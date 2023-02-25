@@ -5,21 +5,14 @@ const dotenv = require('dotenv');
 dotenv.config();
 const app = express();
 
+const workoutRoutes = require('./routes/workouts');
+
 // * middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use((req, res, next) => {
-	console.log(req.path, req.method);
-	next();
-});
-
 // * routes
-app.get('/', (req, res) => {
-	res.send({
-		message: 'Hello from the server.',
-	});
-});
+app.use('/api/workouts', workoutRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
