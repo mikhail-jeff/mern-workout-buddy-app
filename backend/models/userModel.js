@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema(
 
 // * Static Signup Method
 userSchema.statics.signup = async function (email, password) {
-	// * validation
+	// validation
 	if (!email || !password) {
 		throw Error('All fields must be filled');
 	}
@@ -38,6 +38,7 @@ userSchema.statics.signup = async function (email, password) {
 		throw Error('Email already in use');
 	}
 
+	// hashing password
 	const salt = await bcrypt.genSalt(10);
 	const hashedPassword = await bcrypt.hash(password, salt);
 
