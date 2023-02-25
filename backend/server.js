@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const app = express();
 
-const workoutRoutes = require('./routes/workouts');
+const workoutRoutes = require('./routes/workoutRoute');
 const connectDB = require('./config/database');
 
 // * middleware
